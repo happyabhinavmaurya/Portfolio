@@ -127,22 +127,30 @@ nav .fa-solid {
 /* media */
 
 @media screen and (max-width: 700px) {
-   .nav-links ul li {
+    .nav-links {
+        display: none;  /* Change to 'block' to make list items visible */
+    }
+
+    .nav-links ul li {
         display: block;
     }
-
+    
     .nav-links {
-        position: absolute;
+        position: fixed;      /* Use 'fixed' for better positioning control */
         background: rgb(0, 43, 43);
-        height: 100vh;
-        width: 200px;
+        height: 100vh;        
+        width: 200px;       
         top: 0;
-        right: -260px;
+        right: 0;            /* Start with right: 0 for initial visibility */
         text-align: left;
-        z-index: 2;
-        transition: 1s;
+        z-index: 2;          /* Ensure the nav is above other content */
+        transition: transform 1s; /* Transition on 'transform' for smoother movement */
     }
-
+    
+    /* Add a class for the open state */
+    .nav-links.open {
+        transform: translateX(-260px); /* Slide in from the right */
+    }
     .nav-links ul {
         padding: 30px;
     }
